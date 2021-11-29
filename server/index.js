@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -13,7 +14,12 @@ let Prospect = require('./models/prospects');
 app.use(cors());
 app.use(bodyParser.json());
 
-//app.use('/posts', prospectRoutes);
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 
 mongoose.connect('mongodb+srv://btech:BTDeIOBK1hmU4OCW@biorev.fz2ym.mongodb.net/thbs2021?retryWrites=true', { useNewUrlParser: true });
 const connection = mongoose.connection;
