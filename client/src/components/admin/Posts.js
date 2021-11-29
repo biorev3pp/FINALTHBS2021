@@ -44,12 +44,10 @@ const ExpandedComponent = ({ data }) => <><div className="row my-2">
 
 const Posts = () => {
     const [pending, setPending] = useState(true);
-	const [rows, setRows] = useState([]);
     const posts = useSelector((state) => state.posts);
 
     useEffect(() => {
 		const timeout = setTimeout(() => {
-			setRows(posts);
 			setPending(false);
 		}, 2000);
 		return () => clearTimeout(timeout);
@@ -114,7 +112,7 @@ const Posts = () => {
         selectAllRowsItemText: 'All',
     };
 
-    const actionsMemo = useMemo(() => <Export onExport={() => downloadCSV(posts)} />, []);
+    const actionsMemo = useMemo(() => { return <Export onExport={() => { return downloadCSV(posts)} } />}, []);
 
     const conditionalRowStyles = [
         {

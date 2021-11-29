@@ -2,7 +2,7 @@ import React from 'react';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
-export default [
+const columns = [
     {
         name: "First Name",
         selector: (row) => row.first_name,
@@ -50,3 +50,4 @@ export default [
         sortable: false
     },
 ];
+export default columns;
