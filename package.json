@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "build": "(cd server && npm install) & (cd client && npm build)",
+        "start" : "(cd server && nodemon) && (cd client && npm start)"
+    }
+}
